@@ -1,1 +1,14 @@
-<p>login works!</p>
+<div class="container-fluid">
+<h2>User logIn</h2>
+<form #userForm (ngSubmit)="onSubmit()">
+<div class="form-group">
+    <label >Username</label>
+    <input type="text" [(ngModel)]="loginForm.Username" name="Username" class="form-control">
+</div>
+<div class="form-group">
+    <label >password</label>
+    <input type="text" [(ngModel)]="loginForm.Password" name="Password" class="form-control">
+</div>
+<button class="btn btn-primary">submit</button>
+</form>
+</div>

@@ -29,15 +29,7 @@ export class UserService {
     return this.http.delete("")
       .pipe(catchError(this.errorHandler))
   }
-
-  login(username: string, password: string) {
-    return this.http.post<any>("", { username, password })
-      .pipe(catchError(this.errorHandler))
-  }
-  logout() {
-    return this.http.get<any>("")
-      .pipe(catchError(this.errorHandler))
-  }
+  
   errorHandler(error: HttpErrorResponse) {
     return throwError(error);
   }

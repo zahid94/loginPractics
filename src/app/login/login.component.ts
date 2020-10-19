@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Userlog } from "../models/userlog";
+import { AuthenticationService } from "../services/authentication.service";
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,26 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  loginForm=new Userlog("","");
+  returnUrl:string;
+  constructor(private route:ActivatedRoute,private router:Router, private auth: AuthenticationService) {
+    // redirect to home if already logged in
+    
+   }
 
   ngOnInit(): void {
+    // get return url from route parameters or default to '/'
+    this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
-
+  onSubmit() {
+    console.log(this.loginForm)
+    return this.auth.login(this.loginForm)
+      .subscribe(data => 
+        {
+          console.log("success", data);
+          this.router.navigate(['/']);
+        },
+       error => console.log("error",error))
+       
+  }
 }
