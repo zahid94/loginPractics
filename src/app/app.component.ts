@@ -12,7 +12,7 @@ export class AppComponent {
   currentUser: User;
   title = 'loginPractice';
   constructor(private router:Router,private authenticationService:AuthenticationService){
-    authenticationService.currentUser.subscribe(x=>this.currentUser==x)
+    authenticationService.currentUser.subscribe(x=>this.currentUser=x)
   }
   logout(){
     this.authenticationService.logout();
