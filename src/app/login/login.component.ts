@@ -14,7 +14,9 @@ export class LoginComponent implements OnInit {
   returnUrl:string;
   constructor(private route:ActivatedRoute,private router:Router, private auth: AuthenticationService) {
     // redirect to home if already logged in
-    
+    if (this.auth.currentUserValue) {
+      this.router.navigate(['/']);
+  }
    }
 
   ngOnInit(): void {
@@ -27,7 +29,7 @@ export class LoginComponent implements OnInit {
       .subscribe(data => 
         {
           console.log("success", data);
-          this.router.navigate(['/']);
+          this.router.navigate([this.returnUrl]);
         },
        error => console.log("error",error))
        
