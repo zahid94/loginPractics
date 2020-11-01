@@ -24,14 +24,9 @@ export class LoginComponent implements OnInit {
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
   }
   onSubmit() {
-    console.log(this.loginForm)
+    //console.log(this.loginForm)
     return this.auth.login(this.loginForm)
       .subscribe(data => 
-        {
-          console.log("success", data);
-          this.router.navigate([this.returnUrl]);
-        },
-       error => console.log("error",error))
-       
-  }
+        this.router.navigate([this.returnUrl]))
+    }
 }

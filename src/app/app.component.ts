@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { Accesstokens } from './models/accesstokens';
 import { User } from './models/user';
 import { AuthenticationService } from './services/authentication.service';
 
@@ -9,7 +10,7 @@ import { AuthenticationService } from './services/authentication.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  currentUser: User;
+  currentUser: Accesstokens;
   title = 'loginPractice';
   constructor(private router:Router,private authenticationService:AuthenticationService){
     authenticationService.currentUser.subscribe(x=>this.currentUser=x)

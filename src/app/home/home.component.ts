@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Accesstokens } from '../models/accesstokens';
 import { User } from '../models/user';
 import { AuthenticationService } from '../services/authentication.service';
 import { UserService } from "../services/user.service";
@@ -9,7 +10,7 @@ import { UserService } from "../services/user.service";
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  currentUser: User;
+  currentUser: Accesstokens;
   users = [];
 
   constructor(private authenticationService:AuthenticationService,private userService:UserService) {

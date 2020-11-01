@@ -2,21 +2,21 @@ import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { User } from '../models/user';
 import { Userlog } from '../models/userlog';
+import { Accesstokens } from "../models/accesstokens";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthenticationService {
-  private currentUserSubject: BehaviorSubject<User>;
-  public currentUser: Observable<User>;
+  private currentUserSubject: BehaviorSubject<Accesstokens>;
+  public currentUser: Observable<Accesstokens>;
   constructor(private http: HttpClient) {
-    this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem("currentUser")));
+    this.currentUserSubject = new BehaviorSubject<Accesstokens>(JSON.parse(localStorage.getItem("currentUser")));
     this.currentUser = this.currentUserSubject.asObservable();
   }
 
-  public get currentUserValue(): User {
+  public get currentUserValue(): Accesstokens {
     return this.currentUserSubject.value;
   }
 
